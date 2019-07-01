@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: pradeepnbhatpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pradeepnbhatpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: pradeepnbhatpipelinesjavascriptdocker 
+          image: yamlpipelineregistry.azurecr.io/pradeepnbhatpipelinesjavascriptdocker 
+          ports:
+          - containerPort: 8080
