@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: vmfernandezgpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vmfernandezgpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: vmfernandezgpipelinesjavascriptdocker 
+          image: vfernandezg.azurecr.io/vmfernandezgpipelinesjavascriptdocker 
+          ports:
+          - containerPort: 8080
