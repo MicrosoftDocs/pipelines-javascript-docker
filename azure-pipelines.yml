@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -19,3 +20,25 @@ steps:
     repository: $(imageName)
     command: build
     Dockerfile: app/Dockerfile
+- task: UniversalPackages@0
+  inputs:
+    command: 'download'
+    downloadDirectory: '$(System.DefaultWorkingDirectory)'
+    feedsToUse: 'internal'
+    vstsFeed: '8810dc24-af07-43fa-a506-de5fe945f20e'
+    vstsFeedPackage: '200cae98-bc0b-45a1-b539-e4a6932fb351'
+    vstsPackageVersion: '19.7.863'
+- task: CmdLine@2
+  inputs:
+    script: |
+      sudo mv $(System.DefaultWorkingDirectory)/twistcli /usr/bin/twistcli
+      sudo chmod +x /usr/bin/twistcli
+- task: twistcli-scan@1
+  inputs:
+    scanType: 'images'
+    twistlockService: 'Twistlock'
+    vulnerabilityThreshold: 'high'
+    onlyFixed: false
+    gracePeriod: '0'
+    complianceThreshold: 'high'
+    artifact: 'test-image:latest'
