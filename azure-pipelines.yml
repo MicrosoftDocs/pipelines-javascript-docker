@@ -41,4 +41,4 @@ steps:
     onlyFixed: false
     gracePeriod: '0'
     complianceThreshold: 'high'
-    artifact: 'test-image:latest'
+    artifact: 'pipelines-javascript-docker:latest'
