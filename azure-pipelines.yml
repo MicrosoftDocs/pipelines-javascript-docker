@@ -17,7 +17,7 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository: $(imageName):$(Build.BuildId)
+    repository: $(imageName):$(Build)
     command: build
     Dockerfile: app/Dockerfile
 - task: UniversalPackages@0
@@ -41,4 +41,4 @@ steps:
     onlyFixed: false
     gracePeriod: '0'
     complianceThreshold: 'high'
-    artifact: '$(Build.Repository.Name):$(Build.BuildId)'
+    artifact: '$(image.Name):$(Build.BuildId)'
