@@ -17,7 +17,7 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository: $(imageName)
+    repository: $(imageName):$(Build.BuildId)
     command: build
     Dockerfile: app/Dockerfile
 - task: UniversalPackages@0
