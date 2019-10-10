@@ -41,4 +41,4 @@ steps:
     onlyFixed: false
     gracePeriod: '0'
     complianceThreshold: 'high'
-    artifact: '$(Build.Repository.Name):$(Build.BuildId)''
+    artifact: '$(Build.Repository.Name):$(Build.BuildId)'
