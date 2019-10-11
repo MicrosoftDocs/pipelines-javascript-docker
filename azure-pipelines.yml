@@ -42,7 +42,7 @@ steps:
     gracePeriod: '0'
     complianceThreshold: 'critical'
     artifact: '$(imageName):$(Build.BuildId)'
-    - task: DockerCompose@0
+- task: DockerCompose@0
       inputs:
         containerregistrytype: 'Azure Container Registry'
         azureSubscription: 'Visual Studio Enterprise(96d4b62f-baef-4895-8e45-04b69e063cc3)'
