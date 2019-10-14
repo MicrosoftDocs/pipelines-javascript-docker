@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '28c46320-1943-47e7-a09c-d7663318b7ec'
+  dockerRegistryServiceConnection: 'e09626f7-2d8f-4991-8628-c63d42600adf'
   imageRepository: 'vineetpersadpipelinesjavascriptdocker'
   containerRegistry: 'vpersadacrdemobuild.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
