@@ -37,7 +37,7 @@ steps:
   inputs:
     scanType: 'images'
     twistlockService: 'Twistlock'
-    vulnerabilityThreshold: 'high'
+    vulnerabilityThreshold: 'critical'
     onlyFixed: false
     gracePeriod: '0'
     complianceThreshold: 'high'
