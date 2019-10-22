@@ -40,5 +40,5 @@ steps:
     vulnerabilityThreshold: 'critical'
     onlyFixed: false
     gracePeriod: '0'
-    complianceThreshold: 'high'
+    complianceThreshold: 'critical'
     artifact: '$(imageName):$(Build.BuildId)'
