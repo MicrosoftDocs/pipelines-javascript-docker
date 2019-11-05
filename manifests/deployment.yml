@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: divineopspipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: divineopspipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: divineopspipelinesjavascriptdocker 
+          image: ignitesashademo.azurecr.io/divineopspipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
