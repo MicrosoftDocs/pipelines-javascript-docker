@@ -29,3 +29,10 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: HelmDeploy@0
+      inputs:
+        connectionType: 'Azure Resource Manager'
+        azureSubscription: 'iVision-Dev-Work (7668951e-84d2-4d81-9790-7b71669337db)'
+        azureResourceGroup: 'my-aks-rg'
+        kubernetesCluster: 'myapp'
+        command: 'init'
