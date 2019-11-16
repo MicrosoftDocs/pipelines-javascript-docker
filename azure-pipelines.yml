@@ -49,7 +49,7 @@ stages:
   jobs:
   - job: scan
     steps:
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp registry.aquasec.com/scanner:4.2 scan -H https://aquasec-nonprod.ey.com -U aqua-nonprod-scanner -P Sc@n3r99 --local ''$(Build.Repository.Name):$(Build.BuildId)''  --html --htmlfile /tmp/foo.html'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp registry.aquasec.com/scanner:4.2 scan -H https://aquasec-nonprod.ey.com -U aqua-nonprod-scanner -P Sc@n3r99 --local ''$(Build.Repository.Name):$(Build.BuildId)''  --html --htmlfile /tmp/foo.html'
