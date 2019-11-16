@@ -1,0 +1,55 @@
+# Docker
+# Build a Docker image 
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'visdocker'
+        repository: 'osi'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
+#Aqua scanning
+- stage: acrlogin
+  jobs:
+  - job: login
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'visdocker'
+        command: 'login'
+- stage: acrlogin1
+  jobs:
+  - job: login
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'testaqua'
+        command: 'login'
+- stage: aquatest
+  jobs:
+  - job: scan
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp registry.aquasec.com/scanner:4.2 scan -H https://aquasec-nonprod.ey.com -U aqua-nonprod-scanner -P Sc@n3r99 --local ''$(Build.Repository.Name):$(Build.BuildId)''  --html --htmlfile /tmp/foo.html'
