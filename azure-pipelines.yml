@@ -49,15 +49,7 @@ stages:
   jobs:
   - job: scan
     steps:
-     - task: aquasecScanner@4
-       inputs:
-         image: '$(Build.Repository.Name):$(Build.BuildId)'
-         scanType: 'local'
-         register: false
-         hideBase: false
-         showNegligible: false
-         windowsScannerVersion: '4.2.0'
-         scanner: 'testaqua.azurecr.io/aquasec/scanner:4.2.19297'
-         registry: '$(Build.Repository.Name)'
-         connection: 'Aquasanner1'
-         caCertificates: true
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp registry.aquasec.com/scanner:4.2 scan -H https://aquasec-nonprod.ey.com -U aqua-nonprod-scanner -P Sc@n3r99 --local ''$(Build.Repository.Name):$(Build.BuildId)''  --html --htmlfile /tmp/foo.html'
