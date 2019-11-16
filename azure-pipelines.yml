@@ -28,3 +28,36 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+#Aqua scanning
+- stage: acrlogin
+  jobs:
+  - job: login
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'visdocker'
+        command: 'login'
+- stage: acrlogin
+  jobs:
+  - job: login
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'testaqua'
+        command: 'login'
+- stage: aquatest
+  jobs:
+  - job: scan
+    steps:
+     - task: aquasecScanner@4
+       inputs:
+         image: '$(Build.Repository.Name):$(Build.BuildId)'
+         scanType: 'local'
+         register: false
+         hideBase: false
+         showNegligible: false
+         windowsScannerVersion: '4.2.0'
+         scanner: 'testaqua.azurecr.io/aquasec/scanner:4.2.19297'
+         registry: '$(Build.Repository.Name)'
+         connection: 'Aquasanner1'
+         caCertificates: true
