@@ -24,6 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'visdocker'
+        repository: 'osi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
