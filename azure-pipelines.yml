@@ -27,8 +27,7 @@ steps:
     feedsToUse: 'internal'
     vstsFeed: '8810dc24-af07-43fa-a506-de5fe945f20e'
     vstsFeedPackage: '200cae98-bc0b-45a1-b539-e4a6932fb351'
-    vstsPackageVersion: '19.7.863'
-- task: CmdLine@2
+    vstsPackageVersion: '19.11.506'
   inputs:
     script: |
       sudo mv $(System.DefaultWorkingDirectory)/twistcli /usr/bin/twistcli
