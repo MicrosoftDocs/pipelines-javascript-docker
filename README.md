@@ -1,3 +1,4 @@
+[![Board Status](https://dev.azure.com/clouduserp982479/eb44f769-9b16-4212-966b-7fb8c67a7e72/e734b5d8-4862-4bd1-a0fa-6c0f85ffde4c/_apis/work/boardbadge/c832b924-8ce7-4aa2-837e-38cfdcfa57ab)](https://dev.azure.com/clouduserp982479/eb44f769-9b16-4212-966b-7fb8c67a7e72/_boards/board/t/e734b5d8-4862-4bd1-a0fa-6c0f85ffde4c/Microsoft.RequirementCategory)
 
 # Contributing
 
