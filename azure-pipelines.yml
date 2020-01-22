@@ -1,4 +1,4 @@
-# changes to pipeline AB#245
+# changes made to pipeline AB#245
 trigger:
 - master
 
