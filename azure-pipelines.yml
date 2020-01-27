@@ -9,7 +9,13 @@ resources:
 - repo: self
 
 variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'cea1f7cd-e37f-45c6-ab89-8989a12163e4'
+  imageRepository: 'troymcelweepipelinesdotnetcoredocker'
+  containerRegistry: 'troycbsdevacr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
+  
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -18,18 +24,19 @@ stages:
   displayName: Build and push stage
   jobs:  
   - job: Build
-    displayName: Build job
+    displayName: Build
     pool:
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: 'troycbsdevacr'
-        repository: '$(imageRepository)'
-        command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
-        tags: '$(tag)'
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Azure Resource Manager'
