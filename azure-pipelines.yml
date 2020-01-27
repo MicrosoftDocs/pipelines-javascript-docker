@@ -26,7 +26,7 @@ stages:
         containerRegistry: '$(dockerRegistryServiceConnection)'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: 'Dockerfile'
         tags: '$(tag)'
     - task: HelmDeploy@0
       inputs:
@@ -34,4 +34,5 @@ stages:
         azureSubscription: 'Azure DevOps Svc'
         azureResourceGroup: 'my-aks-rg'
         kubernetesCluster: 'myapp'
+        namespace: 'default'
         command: 'init'
