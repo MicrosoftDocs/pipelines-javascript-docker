@@ -23,16 +23,15 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Azure Resource Manager'
-        azureSubscription: 'iVision-Dev-Work (7668951e-84d2-4d81-9790-7b71669337db)'
+        azureSubscription: 'Azure DevOps Svc'
         azureResourceGroup: 'my-aks-rg'
         kubernetesCluster: 'myapp'
         command: 'init'
