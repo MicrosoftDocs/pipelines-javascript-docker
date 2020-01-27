@@ -33,7 +33,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: $(containerRegistry)
         tags: |
           $(tag)
     - task: HelmDeploy@0
