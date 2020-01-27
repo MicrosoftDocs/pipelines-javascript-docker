@@ -10,7 +10,6 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'cea1f7cd-e37f-45c6-ab89-8989a12163e4'
   imageRepository: 'troymcelweepipelinesjavascriptdocker'
   containerRegistry: 'troycbsdevacr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
