@@ -6,10 +6,8 @@ const PORT = 80;
 const HOST = '0.0.0.0';
 
 const app = express();
-app.register('.html', require('jade'));
-
 app.get('/', (req, res) => {
-  res.render('index.html');
+  res.send('<H1>Welcome To Azure AKS</H1>\n');
 });
 
 app.listen(PORT, HOST);
