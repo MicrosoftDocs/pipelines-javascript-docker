@@ -30,12 +30,11 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(containerRegistry)
-        tags: |
-          $(tag)
+        containerRegistry: 'troycbsdevacr'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Azure Resource Manager'
