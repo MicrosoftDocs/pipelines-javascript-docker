@@ -34,7 +34,7 @@ stages:
       inputs:
         connectionType: 'Azure Resource Manager'
         azureSubscription: 'Azure DevOps Svc'
-        azureResourceGroup: 'my-aks-rg'
-        kubernetesCluster: 'myapp'
+        azureResourceGroup: 'devops-aks8-rg'
+        kubernetesCluster: 'devops-aks'
         namespace: 'default'
         command: 'init'
