@@ -28,7 +28,7 @@ stages:
         containerRegistry: 'troycbsdevacr'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
-        Dockerfile: 'Dockerfile'
+        Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
     - task: HelmDeploy@0
       inputs:
@@ -36,5 +36,5 @@ stages:
         azureSubscription: 'Azure DevOps Svc'
         azureResourceGroup: 'devops-aks8-rg'
         kubernetesCluster: 'devops-aks'
-        namespace: 'default'
+        useClusterAdmin: true
         command: 'init'
