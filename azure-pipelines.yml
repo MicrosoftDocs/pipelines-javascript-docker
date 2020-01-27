@@ -36,5 +36,4 @@ stages:
         azureSubscription: 'Azure DevOps Svc'
         azureResourceGroup: 'devops-aks8-rg'
         kubernetesCluster: 'devops-aks'
-        useClusterAdmin: true
         command: 'init'
