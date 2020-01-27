@@ -41,6 +41,6 @@ stages:
         azureSubscription: 'Azure DevOps Svc'
         azureResourceGroup: 'devops-aks8-rg'
         kubernetesCluster: 'devops-aks'
-        useClusterAdmin: true
         namespace: 'default'
         command: 'init'
+        tillerNamespace: 'default'
