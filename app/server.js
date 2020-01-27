@@ -1,14 +1,22 @@
-'use strict';
+// Modules
+const http = require('http');
+const fs = require('fs');
 
-const express = require('express');
+// Server configuration
+const hostname = '0.0.0.0';
+const port = 80;
 
-const PORT = 80;
-const HOST = '0.0.0.0';
-
-const app = express();
-app.get('/', (req, res) => {
-  res.send('<H1>Welcome To Azure AKS</H1>\n');
+// Render page
+fs.readFile('./index.html', function (err, html) {
+    if (err) {
+        throw err; 
+    }       
+    const server = http.createServer(function(request, response) {  
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();  
+    }).listen(port, hostname, () => {
+    	// Console
+	  	console.log(`Server running at http://${hostname}:${port}/`);
+	});
 });
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
