@@ -43,4 +43,9 @@ stages:
         kubernetesCluster: 'devops-aks'
         namespace: 'default'
         command: 'init'
-        tillerNamespace: 'default'
+    - task: KubernetesManifest@0
+      inputs:
+        action: 'deploy'
+        kubernetesServiceConnection: 'devops-devops-aks-default-1580149957776'
+        namespace: 'default'
+        manifests: '**/yaml'
