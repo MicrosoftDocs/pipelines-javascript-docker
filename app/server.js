@@ -7,7 +7,7 @@ const HOST = '0.0.0.0';
 
 const app = express();
 app.get('/', (req, res) => {
-  res.send('<H1>Welcome To Azure AKS</H1>\n');
+  res.send('index.html');
 });
 
 app.listen(PORT, HOST);
