@@ -23,7 +23,7 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: '$(dockerRegistryServiceConnection)'
+        containerRegistry: 'troycbsdevacr'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
         Dockerfile: 'Dockerfile'
