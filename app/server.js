@@ -78,5 +78,5 @@ function requestHandler(req, res) {
 //step 2) create the server
 http.createServer(requestHandler)
 
-//step 3) listen for an HTTP request on port 3000
+//step 3) listen for an HTTP request on port 80
 .listen(80);
