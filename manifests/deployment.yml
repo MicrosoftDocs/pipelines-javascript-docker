@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: ryyaegpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ryyaegpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: ryyaegpipelinesjavascriptdocker 
+          image: ryyaegcontainerregistry.azurecr.io/ryyaegpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
