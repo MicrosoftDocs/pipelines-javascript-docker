@@ -86,7 +86,7 @@ stages:
     pool:
       vmImage: $(vmImageName)
       
-    environment: 'ryyaegpipelinesjavascriptdocker-4256.$(k8sNamespaceForPR)'
+    environment: 'ryyaegpipelinesjavascriptdocker-4256'
 
     strategy:
       runOnce:
