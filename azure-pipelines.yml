@@ -37,8 +37,8 @@ steps:
   inputs:
     scanType: 'images'
     twistlockService: 'Twistlock'
-    vulnerabilityThreshold: 'high'
+    vulnerabilityThreshold: 'off'
     onlyFixed: false
     gracePeriod: '0'
-    complianceThreshold: 'high'
+    complianceThreshold: 'off'
     artifact: '$(imageName):$(Build.BuildId)'
