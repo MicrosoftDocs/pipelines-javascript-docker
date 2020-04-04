@@ -10,7 +10,7 @@ resources:
 
 variables:
 
-  # Container registry service connection established during pipeline creation
+  # Container registry service connection established during pipeline creation444
   dockerRegistryServiceConnection: '48388476-1f0e-48ea-bd43-5a7cd6bb882b'
   imageRepository: 'ryyaegpipelinesjavascriptdocker'
   containerRegistry: 'ryyaegcontainerregistry.azurecr.io'
