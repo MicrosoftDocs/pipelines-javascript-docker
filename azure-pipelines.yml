@@ -15,6 +15,9 @@ variables:
   containerRegistry: 'mycontainerjulia.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
+  environment: $(envName)
+  resource: $(resourceName)
+
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -37,3 +40,9 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - script: |
+        echo  $(environment)
+        echo $(resource)
+        echo ${{ variables['EnvironmentVariable'] }}
+        echo ${{ variables['ResourceVariable'] }}
+
