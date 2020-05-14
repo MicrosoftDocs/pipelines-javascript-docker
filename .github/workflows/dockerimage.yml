@@ -9,6 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      servicePrincipal: ${{ '5a16e934-8d13-408b-b529-e74d8b3e83c5' }}
+      servicePrincipalPassword: ${{'a25c356e-355e-492d-9dc7-fd78fccae032' }}
+      tenantId: ${{'b0ffe258-28bd-45c7-a0cf-de344ee768f7' }}
+      imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
+      containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
     steps:
       - name: Microsoft Azure Container Registry Login
         uses: elgohr/acr-login-action@0.1
@@ -29,11 +35,5 @@ jobs:
           username: ${{ servicePrincipal }}
           password: ${{ servicePrincipalPassword }}
           registry: ${{ containerRegistry }}
-    env:
-      servicePrincipal: ${{ '5a16e934-8d13-408b-b529-e74d8b3e83c5' }}
-      servicePrincipalPassword: ${{'a25c356e-355e-492d-9dc7-fd78fccae032' }}
-      tenantId: ${{'b0ffe258-28bd-45c7-a0cf-de344ee768f7' }}
-      imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
-      containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
 
 
