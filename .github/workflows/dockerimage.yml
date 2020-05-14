@@ -20,7 +20,7 @@ jobs:
         uses: elgohr/acr-login-action@0.1
         with:
           # The ACR service principal to use for login
-          service_principal: ${{ servicePrincipal }}
+          service_principal: ${{ env.servicePrincipal }}
           service_principal_password: ${{ servicePrincipalPassword }}
           # The ACR tenant to use for login
           tenant: ${{ tenantId }}
