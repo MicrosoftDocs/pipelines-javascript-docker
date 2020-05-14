@@ -31,7 +31,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ${{ imageRepository }}
+          name: ${{ env.imageRepository }}
           username: ${{ env.servicePrincipal }}
           password: ${{ env.servicePrincipalPassword }}
           registry: ${{ env.containerRegistry }}
