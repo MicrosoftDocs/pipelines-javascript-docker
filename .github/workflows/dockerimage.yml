@@ -21,19 +21,19 @@ jobs:
         with:
           # The ACR service principal to use for login
           service_principal: ${{ env.servicePrincipal }}
-          service_principal_password: ${{ servicePrincipalPassword }}
+          service_principal_password: ${{ env.servicePrincipalPassword }}
           # The ACR tenant to use for login
-          tenant: ${{ tenantId }}
+          tenant: ${{ env.tenantId }}
           # The ACR registry to use
-          registry: ${{ containerRegistry }}
+          registry: ${{ env.containerRegistry }}
           # The ACR repository to use
-          repository: ${{ imageRepository }}
+          repository: ${{ env.imageRepository }}
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: ${{ imageRepository }}
-          username: ${{ servicePrincipal }}
-          password: ${{ servicePrincipalPassword }}
-          registry: ${{ containerRegistry }}
+          username: ${{ env.servicePrincipal }}
+          password: ${{ env.servicePrincipalPassword }}
+          registry: ${{ env.containerRegistry }}
 
 
