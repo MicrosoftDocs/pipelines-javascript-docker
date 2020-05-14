@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  servicePrincipal: '5a16e934-8d13-408b-b529-e74d8b3e83c5'
+  tenantId: 'b0ffe258-28bd-45c7-a0cf-de344ee768f7'
+  imageRepository: 'nimaipipelinesjavascriptdocker'
+  containerRegistry: 'nimaicontainerregistry.azurecr.io'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Microsoft Azure Container Registry Login
+        uses: elgohr/acr-login-action@0.1
+        with:
+          # The ACR service principal to use for login
+          service_principal: $servicePrincipal
+          # The ACR tenant to use for login
+          tenant: $tenantId
+          # The ACR registry to use
+          registry: $containerRegistry
+          # The ACR repository to use
+          repository: $imageRepository
