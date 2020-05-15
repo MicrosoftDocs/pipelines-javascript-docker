@@ -16,18 +16,6 @@ jobs:
       imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
       containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
     steps:
-      - name: Microsoft Azure Container Registry Login
-        uses: elgohr/acr-login-action@0.1
-        with:
-          # The ACR service principal to use for login
-          service_principal: ${{ env.servicePrincipal }}
-          service_principal_password: ${{ env.servicePrincipalPassword }}
-          # The ACR tenant to use for login
-          tenant: ${{ env.tenantId }}
-          # The ACR registry to use
-          registry: ${{ env.containerRegistry }}
-          # The ACR repository to use
-          repository: ${{ env.imageRepository }}
       - name: Azure Container Registry Build
         uses: ams0/acr-task-github-action@v1
         with:
