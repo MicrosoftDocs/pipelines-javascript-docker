@@ -24,5 +24,5 @@ jobs:
           password: ${{ env.servicePrincipalPassword }}
           repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
-          dockerfile: ${{ app/Dockerfile }}
+          dockerfile: ${{ 'app/Dockerfile' }}
 
