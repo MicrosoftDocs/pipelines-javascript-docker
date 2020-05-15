@@ -16,6 +16,7 @@ jobs:
       imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
       containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
     steps:
+      - uses: actions/checkout@v2
       - name: Azure Container Registry Build
         uses: docker/build-push-action@v1.1.0
         with:
