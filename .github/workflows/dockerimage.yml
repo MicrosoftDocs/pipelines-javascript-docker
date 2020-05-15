@@ -28,13 +28,14 @@ jobs:
           registry: ${{ env.containerRegistry }}
           # The ACR repository to use
           repository: ${{ env.imageRepository }}
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - name: Azure Container Registry Build
+        uses: ams0/acr-task-github-action@v1
         with:
-          name: ${{ env.imageRepository }}
-          username: ${{ env.servicePrincipal }}
-          password: ${{ env.servicePrincipalPassword }}
+          image: ${{ env.imageRepository }}
+          service_principal: ${{ env.servicePrincipal }}
+          service_principal_password: ${{ env.servicePrincipalPassword }}
+          repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
-          workdir: ${{ 'app' }}
-
+          tenant: ${{ env.tenantId }}
+          dockerfile: ${{ './app/Dockerfile' }}
 
