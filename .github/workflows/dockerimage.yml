@@ -17,13 +17,12 @@ jobs:
       containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
     steps:
       - name: Azure Container Registry Build
-        uses: ams0/acr-task-github-action@v1
+        uses: docker/build-push-action@v1.1.0
         with:
           image: ${{ env.imageRepository }}
-          service_principal: ${{ env.servicePrincipal }}
-          service_principal_password: ${{ env.servicePrincipalPassword }}
+          username: ${{ env.servicePrincipal }}
+          password: ${{ env.servicePrincipalPassword }}
           repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
-          tenant: ${{ env.tenantId }}
           dockerfile: ${{ './app/Dockerfile' }}
 
