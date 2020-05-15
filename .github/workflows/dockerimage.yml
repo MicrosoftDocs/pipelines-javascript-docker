@@ -35,5 +35,6 @@ jobs:
           username: ${{ env.servicePrincipal }}
           password: ${{ env.servicePrincipalPassword }}
           registry: ${{ env.containerRegistry }}
+          workdir: ${{ 'app' }}
 
 
