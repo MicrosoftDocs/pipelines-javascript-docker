@@ -15,7 +15,7 @@ jobs:
       tenantId: ${{'b0ffe258-28bd-45c7-a0cf-de344ee768f7' }}
       imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
       containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
-      tag: ${{ GITHUB_RUN_NUMBER }}
+      tag: ${{ github.run_number }}
     steps:
       - uses: actions/checkout@v2
       - name: Azure Container Registry Build
