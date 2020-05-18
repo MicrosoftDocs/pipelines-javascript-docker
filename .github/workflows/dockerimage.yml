@@ -27,13 +27,14 @@ jobs:
           repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
           dockerfile: ${{ 'app/Dockerfile' }}
-          tag_with_sha: ${{ true }}
-          #tag: ${{ env.tag }}
-    #  - name: ACR Fetch Repository Manifest
-    #    id: getManifest
-    #    uses: Azure/cli@v1.0.0
-    #    with:
-    #      # Specify the script here
-    #      inlineScript: |
-    #      az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }}
+          #tag_with_sha: ${{ true }}
+          tag: ${{ env.tag }}
+      - name: ACR Fetch Repository Manifest
+        id: getManifest
+        uses: Azure/cli@v1.0.0
+        with:
+          # Specify the script here
+          inlineScript: |
+            az login --service-principal -u ${{ env.servicePrincipal }} -p ${{ env.servicePrincipalPassword }}
+            az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }}
 
