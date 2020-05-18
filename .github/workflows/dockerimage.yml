@@ -26,4 +26,11 @@ jobs:
           repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
           dockerfile: ${{ 'app/Dockerfile' }}
+      - name: ACR Fetch Repository Manifest
+        id: getManifest
+        uses: Azure/cli@v1.0.0
+        with:
+          # Specify the script here
+          inlineScript: |
+            az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }}
 
