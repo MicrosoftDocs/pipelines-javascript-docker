@@ -15,6 +15,7 @@ jobs:
       tenantId: ${{'b0ffe258-28bd-45c7-a0cf-de344ee768f7' }}
       imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
       containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
+      tag: ${{ GITHUB_RUN_NUMBER }}
     steps:
       - uses: actions/checkout@v2
       - name: Azure Container Registry Build
@@ -26,7 +27,7 @@ jobs:
           repository: ${{ env.imageRepository }}
           registry: ${{ env.containerRegistry }}
           dockerfile: ${{ 'app/Dockerfile' }}
-          tag_with_sha: ${{ true }}
+          tag: ${{ env.tag }}
     #  - name: ACR Fetch Repository Manifest
     #    id: getManifest
     #    uses: Azure/cli@v1.0.0
