@@ -36,5 +36,5 @@ jobs:
           # Specify the script here
           inlineScript: |
             az login --service-principal -u ${{ env.servicePrincipal }} -p ${{ env.servicePrincipalPassword }} --tenant ${{ env.tenantId }}
-            az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_asc -top 1
+            az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_asc --top 1
 
