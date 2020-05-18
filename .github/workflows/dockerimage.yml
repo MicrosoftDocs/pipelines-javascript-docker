@@ -18,7 +18,6 @@ jobs:
       tag: ${{ github.run_number }}
     steps:
       - uses: actions/checkout@v2
-      - name: Azure Container Registry Build
       - name: ACR Fetch Repository Manifest
         id: getManifest
         uses: Azure/cli@v1.0.0
@@ -28,7 +27,6 @@ jobs:
             az login --service-principal -u ${{ env.servicePrincipal }} -p ${{ env.servicePrincipalPassword }} --tenant ${{ env.tenantId }}
             echo "::set-output name=manifest::$(az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_desc --top 1)"
       - name: Push Metadata to Blockchain
-        run: |
-          echo ${{ steps.getManifest.outputs.manifest }}
+        run: echo ${{ steps.getManifest.outputs.manifest }}
           
 
