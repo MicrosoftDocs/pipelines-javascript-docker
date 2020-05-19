@@ -5,6 +5,6 @@ if __name__ == "__main__":
     deployer = sys.argv[2]
     manifest = manifestData.split()
     digest = manifest[0]
-    creationDate = manifest[2]
+    creationDate = manifest[1]
     print(digest)
     print(creationDate)
