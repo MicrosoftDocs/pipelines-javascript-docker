@@ -32,7 +32,7 @@ jobs:
           python-version: '3.6'
       - name: Run python script
         run: |
-          python ttdata_script.py ${{ steps.getManifest.outputs.manifest }} ${{ env.deployer }}
+          python ttdata_script.py ${{ steps.getManifest.outputs.manifest }} ${{ env.deployer }} ${{ env.imageRepository }}
 
           
 
