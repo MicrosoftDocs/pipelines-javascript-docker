@@ -12,7 +12,7 @@ if __name__ == "__main__":
     print(deployer)
     print(imageName)
 
-    url = "http://ixinbuy.com:7061/register"
+    url = "http://ttdata.life:7061/register"
     payload = "{\"device_id\":\"" + imageName + "\"}"
     headers = {
     'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     response = requests.request("POST", url, headers=headers, data = payload)
     print(response.text.encode('utf8'))
 
-    url1 = "http://ixinbuy.com:7061/uploaddata"
+    url1 = "http://ttdata.life:7061/uploaddata"
     data = {
         'Last Updated Datetime': lastUpdatedTime,
         'Image Name': imageName,
