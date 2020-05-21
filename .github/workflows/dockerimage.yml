@@ -19,6 +19,17 @@ jobs:
       deployer: ${{ github.actor }}
     steps:
       - uses: actions/checkout@v2
+      - name: Azure Container Registry Build
+        uses: docker/build-push-action@v1.1.0
+        with:
+          image: ${{ env.imageRepository }}
+          username: ${{ env.servicePrincipal }}
+          password: ${{ env.servicePrincipalPassword }}
+          repository: ${{ env.imageRepository }}
+          registry: ${{ env.containerRegistry }}
+          dockerfile: ${{ 'app/Dockerfile' }}
+          tag_with_sha: ${{ true }}
+          #tag: ${{ env.tag }}
       - name: ACR Fetch Repository Manifest
         id: getManifest
         uses: Azure/cli@v1.0.0
