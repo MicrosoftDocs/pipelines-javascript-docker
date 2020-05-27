@@ -10,11 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      servicePrincipal: ${{ '5a16e934-8d13-408b-b529-e74d8b3e83c5' }}
-      servicePrincipalPassword: ${{'a25c356e-355e-492d-9dc7-fd78fccae032' }}
-      tenantId: ${{'b0ffe258-28bd-45c7-a0cf-de344ee768f7' }}
+      servicePrincipal: ${{ '14d58199-c9d6-4c8f-b8b3-86a4af5f6381' }}
+      servicePrincipalPassword: ${{'97f2d985-d74d-4131-be7b-6dc5b7dab328' }}
+      tenantId: ${{'9723d66d-a47e-4929-9193-9d830fcff062' }}
       imageRepository: ${{ 'nimaipipelinesjavascriptdocker' }}
-      containerRegistry: ${{ 'nimaicontainerregistry.azurecr.io' }}
+      containerRegistry: ${{ 'containerregistrytestnimai.azurecr.io' }}
       tag: ${{ github.run_number }}
       deployer: ${{ github.actor }}
     steps:
@@ -36,7 +36,8 @@ jobs:
         with:
           inlineScript: |
             az login --service-principal -u ${{ env.servicePrincipal }} -p ${{ env.servicePrincipalPassword }} --tenant ${{ env.tenantId }}
-            echo "::set-output name=manifest::$(az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_desc --top 1 --out tsv)"
+            echo "::set-output name=manifestNewest::$(az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_desc --top 1 --out tsv)"
+            echo "::set-output name=manifestOldest::$(az acr repository show-manifests -n ${{ env.containerRegistry }} --repository ${{ env.imageRepository }} --orderby time_asc --top 1 --out tsv)"
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -44,7 +45,7 @@ jobs:
       - name: Run python script
         run: |
           pip install requests
-          python ttdata_script.py ${{ steps.getManifest.outputs.manifest }} ${{ env.deployer }} ${{ env.imageRepository }}
+          python ttdata_script.py ${{ steps.getManifest.outputs.manifestNewest }} ${{ env.deployer }} ${{ env.imageRepository }}
 
           
 

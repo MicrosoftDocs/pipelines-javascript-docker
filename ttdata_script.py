@@ -1,34 +1,44 @@
 import sys
 import requests
 
-if __name__ == "__main__":
-    digest = sys.argv[1]
-    lastUpdatedTime = sys.argv[3]
-    deployer = sys.argv[4]
-    imageName = sys.argv[5]
-
-    print(digest)
-    print(lastUpdatedTime)
-    print(deployer)
-    print(imageName)
-
+def register(did):
     url = "http://ttdata.life:7061/register"
-    payload = "{\"device_id\":\"" + imageName + "\"}"
-    headers = {
-    'Content-Type': 'application/json'
-    }
-    response = requests.request("POST", url, headers=headers, data = payload)
+    payload = {"device_id": did,
+                "category": "saic"
+              }
+    response = requests.post(url=url, data = payload)
     print(response.text.encode('utf8'))
+    print("^^register response^^")
 
-    url1 = "http://ttdata.life:7061/uploaddata"
-    data = {
-        'Last Updated Datetime': lastUpdatedTime,
-        'Image Name': imageName,
-        'Deployer': deployer,
-        'Digest': digest
+def upload_data(lastUpdatedDatetime, deployer, imageName, digest):
+    url = "http://ttdata.life:7061/uploaddata"
+    device_data = [{
+    'last_updated_datetime': lastUpdatedDatetime,
+    'name': imageName,
+    'deployer': deployer,
+    'digest': digest,
+    'key': "last_updated_datetime|name|deployer|digest"
+    }]
+
+    payload = {
+    "data_type": 2,
+    "device_id": imageName,
+    "key": "last_updated_datetime|name|deployer|digest",
+    "device_data": device_data
     }
-    r = requests.post(url = url1, data = data)
+
+    r = requests.post(url = url, json = payload)
     print(r.text.encode('utf8'))
+
+
+if __name__ == "__main__":
+    digest = 'abcdef' #sys.argv[1]
+    lastUpdatedTime = '12/12/1998' #sys.argv[3]
+    deployer = 'Nimai' #sys.argv[4]
+    imageName = 'nimaipipelinesjavascriptdocker' #sys.argv[5]
+
+    register(imageName)
+    upload_data(lastUpdatedTime, deployer, imageName, digest)
 
 
 
