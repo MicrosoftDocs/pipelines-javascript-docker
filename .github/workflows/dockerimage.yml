@@ -29,7 +29,7 @@ jobs:
           registry: ${{ env.containerRegistry }}
           dockerfile: ${{ 'app/Dockerfile' }}
           #tag_with_sha: ${{ true }}
-          tag: ${{ 6 }}
+          tag: ${{ 'v2' }}
       - name: ACR Fetch Repository Manifest
         id: getManifest
         uses: Azure/cli@v1.0.0
