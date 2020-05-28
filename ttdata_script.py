@@ -10,12 +10,13 @@ def register(did):
     print(response.text.encode('utf8'))
     print("^^register response^^")
 
-def upload_data(creationDatetime, lastUpdatedDatetime, deployer, imageName, digest):
+def upload_data(creationDatetime, lastUpdatedDatetime, deployer, imageName, digest, tag):
     url = "http://ttdata.life:7061/uploaddata"
     device_data = [{
     'creation_datetime': creationDatetime,
     'last_updated_datetime': lastUpdatedDatetime,
     'name': imageName,
+    'tag': tag,
     'deployer': deployer,
     'digest': digest,
     'key': "last_updated_datetime|name|deployer|digest"
@@ -38,13 +39,15 @@ if __name__ == "__main__":
     digest = sys.argv[3]
     lastUpdatedTime = sys.argv[5]
     creationTime = sys.argv[8]
+    tag = sys.argv[9]
 
     print(lastUpdatedTime)
     print(digest)
     print(creationTime)
+    print(tag)
     
     register(imageName)
-    upload_data(creationTime, lastUpdatedTime, deployer, imageName, digest)
+    upload_data(creationTime, lastUpdatedTime, deployer, imageName, digest, tag)
 
 
 
