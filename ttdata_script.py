@@ -10,9 +10,10 @@ def register(did):
     print(response.text.encode('utf8'))
     print("^^register response^^")
 
-def upload_data(lastUpdatedDatetime, deployer, imageName, digest):
+def upload_data(creationDatetime, lastUpdatedDatetime, deployer, imageName, digest):
     url = "http://ttdata.life:7061/uploaddata"
     device_data = [{
+    'creation_datetime': creationDatetime,
     'last_updated_datetime': lastUpdatedDatetime,
     'name': imageName,
     'deployer': deployer,
@@ -32,13 +33,18 @@ def upload_data(lastUpdatedDatetime, deployer, imageName, digest):
 
 
 if __name__ == "__main__":
-    digest = 'abcdef' #sys.argv[1]
-    lastUpdatedTime = '12/12/1998' #sys.argv[3]
-    deployer = 'Nimai' #sys.argv[4]
-    imageName = 'nimaipipelinesjavascriptdocker' #sys.argv[5]
+    deployer = sys.argv[1]
+    imageName = sys.argv[2]
+    digest = sys.argv[3]
+    lastUpdatedTime = sys.argv[5]
+    creationTime = sys.argv[8]
 
+    print(lastUpdatedTime)
+    print(digest)
+    print(creationTime)
+    
     register(imageName)
-    upload_data(lastUpdatedTime, deployer, imageName, digest)
+    upload_data(creationTime, lastUpdatedTime, deployer, imageName, digest)
 
 
 

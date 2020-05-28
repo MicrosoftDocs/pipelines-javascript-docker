@@ -44,7 +44,7 @@ jobs:
       - name: Run python script
         run: |
           pip install requests
-          python ttdata_script.py ${{ steps.getManifest.outputs.manifestNewest }} ${{ env.deployer }} ${{ env.imageRepository }}
+          python ttdata_script.py ${{ env.deployer }} ${{ env.imageRepository }} ${{ steps.getManifest.outputs.manifestNewest }}  ${{ steps.getManifest.outputs.manifestOldest }} 
 
           
 
