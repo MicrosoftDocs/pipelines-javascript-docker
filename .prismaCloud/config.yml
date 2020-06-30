@@ -1,0 +1,25 @@
+# Specify the template type. Valid values are as follows.
+# - For Terraform: TF
+# - For AWS CloudFormation: CFT
+# - For Kubernetes: K8S
+				
+template_type: TF
+
+# The valid values for terraform_version are 0.11 or 0.12
+				
+terraform_version: 0.11
+
+# If terraform_version is 0.11, then terraform_011_parameters 
+# is required.
+# The value for variable_files is an array of custom variable file
+# names. The path of each file is relative to your repository
+# branch root directory 
+# The value for variable_values is an array of name/value pairs 
+# that identify the input variables your template uses.
+				
+terraform_011_parameters:
+	variable_files:
+		- scan/rich-value-types/network/variables.tf
+	 variable_values:
+		- name: check 
+		  value: public-read-write
