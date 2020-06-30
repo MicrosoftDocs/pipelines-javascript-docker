@@ -23,3 +23,12 @@ terraform_011_parameters:
 	 variable_values:
 		- name: check 
 		  value: public-read-write
+- task: Prisma Cloud IaC Scan@2
+  inputs:
+    Path: '.'
+    prismaCloudService: 'Prisma Cloud - IaC Scan'
+    High: '0'
+    Medium: '0'
+    Low: '0'
+    Operator: 'or'
+    Tags: 'env:dev'
