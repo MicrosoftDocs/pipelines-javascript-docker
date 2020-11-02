@@ -1,4 +1,9 @@
 
+
+# Hello World!
+
+This repo is being used in conjuction with the [AKSHelloWorld](https://dev.azure.com/daveburnisonms/AKSHelloWorld/_dashboards/dashboard/3e3ff6ad-7192-46b7-8e94-1f57b34450b2) **Azure DevOps** Team Project. This was setup based on the [Build and deploy to Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/kubernetes/aks-template) tutorial. 
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
