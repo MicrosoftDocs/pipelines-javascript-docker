@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: dabupipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dabupipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: dabupipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: dabupipelinesjavascriptdocker 
+          image: dabucontainerregistry.azurecr.io/dabupipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
