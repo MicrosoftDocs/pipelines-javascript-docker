@@ -33,12 +33,8 @@ steps:
     script: |
       sudo mv $(System.DefaultWorkingDirectory)/twistcli /usr/bin/twistcli
       sudo chmod +x /usr/bin/twistcli
-- task: twistcli-scan@1
+- task: prisma-cloud-compute-scan@2
   inputs:
     scanType: 'images'
-    twistlockService: 'Twistlock'
-    vulnerabilityThreshold: 'high'
-    onlyFixed: false
-    gracePeriod: '0'
-    complianceThreshold: 'high'
+    twistlockService: 'Prisma Cloud SaaS - Container Scan'
     artifact: '$(imageName):$(Build.BuildId)'
