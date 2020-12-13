@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: francisnazarethpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: francisnazarethpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: francisnazarethpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: francisnazarethpipelinesjavascriptdocker 
+          image: fregistry.azurecr.io/francisnazarethpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
