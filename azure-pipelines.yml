@@ -1,16 +1,17 @@
-   trigger:
-   - main
-   
-   pool:
-     vmImage: 'Ubuntu-latest'
-   
-   variables:
-     imageName: 'pipelines-javascript-docker'
-   
-   steps:
-   - task: Docker@2
-     displayName: Build an image
-     inputs:
-       repository: $(imageName)
-       command: build
-       Dockerfile: app/Dockerfile
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  imageName: 'pipelines-javascript-docker'
+  DOCKER_BUILDKIT: 1
+    
+steps:
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: $(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
