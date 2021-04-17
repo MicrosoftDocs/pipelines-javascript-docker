@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: udhanmtipipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udhanmtipipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: udhanmtipipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: udhanmtipipelinesjavascriptdocker 
+          image: testpipelines.azurecr.io/udhanmtipipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
