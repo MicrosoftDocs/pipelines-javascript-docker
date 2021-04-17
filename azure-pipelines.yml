@@ -5,7 +5,9 @@
           vmImage: ubuntu-latest # set to windows-latest or another Windows vmImage for Windows builds
 
         variables:
-          imageName: 'pipelines-javascript-docker'
+          #imageName: 'pipelines-javascript-docker'
+          containerRegistryServiceConnection: docker-registry-udhan
+          imageName: pipeline-test-1/pipelines-javascript-docker
 
         steps:
         - task: Docker@2
@@ -14,3 +16,12 @@
             repository: $(imageName)
             command: build
             Dockerfile: app/Dockerfile
+        - task: Docker@2
+          displayName: Push image
+          inputs:
+            containerRegistry: |
+              $(dockerHub)
+            repository: $(imageName)
+            command: push
+            tags: |
+              test1
