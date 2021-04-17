@@ -7,7 +7,7 @@
         variables:
           #imageName: 'pipelines-javascript-docker'
           containerRegistryServiceConnection: docker-registry-udhan
-          imageName: pipeline-test-1/pipelines-javascript-docker
+          imageName: udhanisuranga/pipeline-test-1
 
         steps:
         - task: Docker@2
