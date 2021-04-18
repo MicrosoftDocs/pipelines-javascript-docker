@@ -72,7 +72,7 @@ stages:
             displayName: kubectl apply using arguments
             inputs:
               connectionType: Azure Resource Manager
-              azureSubscriptionEndpoint: wso2SRE-rnd-PayAsYouGo
+              azureSubscriptionEndpoint: k8-udhan
               azureResourceGroup: udhan-rnd
               kubernetesCluster: test-pipelines-2
               command: apply
