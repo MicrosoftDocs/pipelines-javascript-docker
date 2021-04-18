@@ -80,6 +80,7 @@ stages:
             inputs:
               connectionType: 'Azure Resource Manager'
               azureResourceGroup: 'udhan-rnd'
+              azureSubscriptionEndpoint: 'k8-udhan'
               kubernetesCluster: 'test-pipelines-2'
               command: 'apply'
               arguments: '-f $(Pipeline.Workspace)/manifests/deployment.yml'
