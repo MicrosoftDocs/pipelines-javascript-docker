@@ -77,8 +77,8 @@ stages:
                 $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+              #containers: |
+              #  $(containerRegistry)/$(imageRepository):$(tag)
 
   - deployment: DeployPullRequest
     displayName: Deploy Pull request
