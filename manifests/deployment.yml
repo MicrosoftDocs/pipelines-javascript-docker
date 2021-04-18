@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: udhanmtipipelinesjavascriptdocker 
-          image: testpipelines.azurecr.io/udhanmtipipelinesjavascriptdocker
+          image: testpipelines.azurecr.io/udhanmtipipelinesjavascriptdocker:latest
           ports:
           - containerPort: 8080
