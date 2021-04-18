@@ -76,7 +76,7 @@ stages:
               azureResourceGroup: udhan-rnd
               kubernetesCluster: test-pipelines-2
               command: apply
-              arguments: -f manifest/deployment.yaml
+              arguments: -f $(Pipeline.Workspace)/manifest/deployment.yaml
 
 
           #- task: KubernetesManifest@0
