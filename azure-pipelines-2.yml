@@ -81,7 +81,7 @@ stages:
               connectionType: 'Azure Resource Manager'
               azureResourceGroup: 'udhan-rnd'
               azureSubscriptionEndpoint: 'k8-udhan'
-              kubernetesCluster: 'test-pipelines-3'
+              kubernetesCluster: 'test-pipeline-3'
               command: 'apply'
               arguments: '-f $(Pipeline.Workspace)/manifests/deployment.yml'
               secretType: 'dockerRegistry'
