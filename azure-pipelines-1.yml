@@ -81,6 +81,12 @@ stages:
               kubernetesCluster: test-pipelines-2
               command: apply
               arguments: -f $(Pipeline.Workspace)/manifests/deployment.yml
+              secretType: dockerRegistry
+              containerRegistryType: Azure Container Registry
+              azureSubscriptionEndpointForSecrets: k8-udhan
+              azureContainerRegistry: $(containerRegistry)
+              secretName: $(imagePullSecret)
+              forceUpdate: true
 
 
           #- task: KubernetesManifest@0
