@@ -88,6 +88,6 @@ stages:
               containerRegistryType: 'Azure Container Registry'
               azureSubscriptionEndpointForSecrets: 'k8-udhan'
               azureContainerRegistry: 'testpipelines.azurecr.io'
-              secretName: 'mysecret'
+              secretName: $(imagePullSecret)
               outputFormat: 'yaml'
 
