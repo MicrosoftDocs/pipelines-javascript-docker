@@ -67,6 +67,8 @@ stages:
           #    action: createSecret
           #    secretName: $(imagePullSecret)
           #    dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          - download: current
+            artifact: manifests
           
           - task: Kubernetes@1
             displayName: kubectl apply using arguments
