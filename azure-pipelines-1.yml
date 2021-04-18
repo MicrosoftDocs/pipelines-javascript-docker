@@ -61,14 +61,16 @@ stages:
       runOnce:
         deploy:
           steps:
-          #- task: KubernetesManifest@0
-          #  displayName: Create imagePullSecret
-          #  inputs:
-          #    action: createSecret
-          #    secretName: $(imagePullSecret)
-          #    dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          
           - download: current
             artifact: manifests
+            
+          - task: KubernetesManifest@0
+            displayName: Create imagePullSecret
+            inputs:
+              action: createSecret
+              secretName: $(imagePullSecret)
+              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
           
           - task: Kubernetes@1
             displayName: kubectl apply using arguments
