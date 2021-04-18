@@ -17,3 +17,5 @@ spec:
           image: testpipelines.azurecr.io/udhanmtipipelinesjavascriptdocker:latest
           ports:
           - containerPort: 8080
+      imagePullSecrets:
+        - name: testpipelines97949710-auth
