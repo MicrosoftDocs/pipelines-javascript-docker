@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: bergopipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bergopipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: bergopipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: bergopipelinesjavascriptdocker 
+          image: aksdeploymentacr.azurecr.io/bergopipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
