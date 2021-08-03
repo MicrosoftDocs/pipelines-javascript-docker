@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: bergopipelinesjavascriptdocker
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 8080 
+    selector:
+        app: bergopipelinesjavascriptdocker
