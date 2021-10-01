@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: juliakmpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juliakmpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: juliakmpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: juliakmpipelinesjavascriptdocker 
+          image: votingappcontainer.azurecr.io/juliakmpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
