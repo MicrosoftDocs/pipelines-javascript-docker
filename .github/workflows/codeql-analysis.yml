@@ -28,7 +28,7 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
+da: yes
     strategy:
       fail-fast: false
       matrix:
