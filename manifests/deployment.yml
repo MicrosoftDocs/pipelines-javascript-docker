@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: pradeepiyerustpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pradeepiyerustpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: pradeepiyerustpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: pradeepiyerustpipelinesjavascriptdocker 
+          image: da123containerregistry.azurecr.io/pradeepiyerustpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
