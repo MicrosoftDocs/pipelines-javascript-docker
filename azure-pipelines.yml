@@ -66,6 +66,7 @@ stages:
             inputs:
               action: 'createSecret'
               kubernetesServiceConnection: 'k831622'
+              namespace: 'default'
               secretType: 'dockerRegistry'
               secretName: '$(imagePullSecret)'
               dockerRegistryEndpoint: '$(dockerRegistryServiceConnection)'
@@ -75,6 +76,7 @@ stages:
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'k831622'
+              namespace: 'default'
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
