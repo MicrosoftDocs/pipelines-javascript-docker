@@ -1,11 +1,14 @@
-FROM node:12
+# syntax=docker/dockerfile:1
 
-WORKDIR /usr/src/app
+FROM node:12.18.1
+ENV NODE_ENV=production
 
-COPY package*.json ./
-RUN npm ci --only=production
+WORKDIR /app
+
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
 
 COPY . .
 
-EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "node", "server.js" ]
