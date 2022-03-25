@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: phpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: phpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: phpipelinesjavascriptdocker 
+          image: philip1979containerregistry.azurecr.io/phpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
