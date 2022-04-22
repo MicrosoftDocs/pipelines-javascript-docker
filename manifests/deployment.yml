@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: pjohnsonpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pjohnsonpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: pjohnsonpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: pjohnsonpipelinesjavascriptdocker 
+          image: acrlearnpj.azurecr.io/pjohnsonpipelinesjavascriptdocker
+          ports:
+          - containerPort: 80
