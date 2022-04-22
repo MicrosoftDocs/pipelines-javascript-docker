@@ -16,4 +16,4 @@ spec:
         - name: pjohnsonpipelinesjavascriptdocker 
           image: acrlearnpj.azurecr.io/pjohnsonpipelinesjavascriptdocker
           ports:
-          - containerPort: 3000
+          - containerPort: 80
