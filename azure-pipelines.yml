@@ -38,7 +38,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'dockermarcus'
-        repository: 'azurepipelinetest'
+        repository: 'schuerstedt/azurepipelinetest'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
