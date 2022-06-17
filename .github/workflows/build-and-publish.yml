@@ -28,6 +28,6 @@ jobs:
         with:
           context: "{{defaultContext}}:app"
           push: true
-          tags: user/app:latest
+          tags: schuerstedt/azurepipelinetest:latest
       - name: Image digest
         run: echo "hi mac"
