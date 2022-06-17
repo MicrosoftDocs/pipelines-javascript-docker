@@ -3,7 +3,7 @@ name: Build and Publish
 on:
   # run it on push to the default repository branch
   push:
-    branches: [main]
+    branches: [master]
   # run it during pull request
   pull_request:
 
