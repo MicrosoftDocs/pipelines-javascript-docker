@@ -1,13 +1,12 @@
 name: Build and Publish
 
 on:
-  # run it on push to the default repository branch
   push:
-    branches: [ master ]
-  # run it during pull request
+    branches: [ "master" ]
   pull_request:
+    branches: [ "master" ]
 
-defaults:
+jobs:
   # define job to build and publish docker image
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
