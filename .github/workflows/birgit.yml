@@ -1,0 +1,16 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Birgit Hallo
+        run: echo "hi birgit"
+        
+        
