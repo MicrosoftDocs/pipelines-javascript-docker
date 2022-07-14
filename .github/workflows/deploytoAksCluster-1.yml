@@ -1,0 +1,64 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@master
+    
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create ACR
+      id: create-acr
+      run: |
+        az acr create -n az2gcloudcont -g az2gcloudcontab64-rg --location "Central US" --sku Standard --admin-enabled
+        echo "::set-output name=acr_username::`az acr credential show -n az2gcloudcont --query username | xargs`"
+        echo "::set-output name=acr_password::`az acr credential show -n az2gcloudcont --query passwords[0].value | xargs`"
+        echo "::add-mask::`az acr credential show -n az2gcloudcont --query passwords[0].value | xargs`"
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: az2gcloudcont.azurecr.io
+        username: ${{ steps.create-acr.outputs.acr_username }}
+        password: ${{ steps.create-acr.outputs.acr_password }}
+
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/app" -f  "app/Dockerfile" -t az2gcloudcont.azurecr.io/azkub01:${{ github.sha }} --label dockerfile-path=app/Dockerfile
+        docker push az2gcloudcont.azurecr.io/azkub01:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      id: login
+      with:
+         kubeconfig: ${{ secrets.aks_azkub01_kubeConfig }}
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep gcloud-space | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace gcloud-space`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: gcloud-space
+        container-registry-url: az2gcloudcont.azurecr.io
+        container-registry-username: ${{ steps.create-acr.outputs.acr_username }}
+        container-registry-password: ${{ steps.create-acr.outputs.acr_password }}
+        secret-name: azkub01dockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: gcloud-space
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+          manifests/ingress-1.yml
+        images: |
+          az2gcloudcont.azurecr.io/azkub01:${{ github.sha }}
+        imagepullsecrets: |
+          azkub01dockerauth   
