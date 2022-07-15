@@ -4,6 +4,7 @@
 
 trigger:
 - master
+- azure
 
 resources:
 - repo: self
