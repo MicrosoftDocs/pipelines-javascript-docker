@@ -1,0 +1,17 @@
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+    name: "azkub01-3e66"
+    labels:
+        app: "azkub01-3e66"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: gcloud-space-azkub01-3e66.97ae02f4ab504d60b25a.centralus.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "azkub01-3e66"
+                servicePort: 8080
