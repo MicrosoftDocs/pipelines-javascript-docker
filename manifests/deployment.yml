@@ -11,8 +11,6 @@ spec:
       app: sampleapp
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: "true"
       labels:
         app: sampleapp
     spec:
