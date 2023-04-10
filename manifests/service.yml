@@ -17,3 +17,13 @@ spec:
     protocol: TCP
     targetPort: 8080
   type: ClusterIP
+
+--- 
+  
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sa1-token
+  annotations:
+    kubernetes.io/service-account.name: cicd
+type: kubernetes.io/service-account-token
