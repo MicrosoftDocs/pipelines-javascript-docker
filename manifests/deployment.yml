@@ -5,7 +5,8 @@ metadata:
   labels:
     app: sampleapp
 spec:
-  replicas: 4
+  progressDeadlineSeconds: 3600
+  replicas: 1
   selector:
     matchLabels:
       app: sampleapp
@@ -14,6 +15,7 @@ spec:
       labels:
         app: sampleapp
     spec:
+      serviceAccountName: cicd
       containers:
       - name: sampleapp
         #replace <foobar> with your container registry. Example: contosodemo.azurecr.io
