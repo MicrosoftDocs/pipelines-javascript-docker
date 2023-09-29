@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: javascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: javascriptdocker
+  template:
+    metadata:
+      labels:
+        app: javascriptdocker 
+    spec:
+      containers:
+        - name: javascriptdocker 
+          image: 999smgo.azurecr.io/javascriptdocker
+          ports:
+          - containerPort: 8080
