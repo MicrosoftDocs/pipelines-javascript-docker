@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: mtailebpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mtailebpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: mtailebpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: mtailebpipelinesjavascriptdocker 
+          image: acrmt.azurecr.io/mtailebpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
