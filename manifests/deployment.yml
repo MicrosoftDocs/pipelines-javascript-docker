@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: bennkennpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bennkennpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: bennkennpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: bennkennpipelinesjavascriptdocker 
+          image: azraudiuslab.azurecr.io/bennkennpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
