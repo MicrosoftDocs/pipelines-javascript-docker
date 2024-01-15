@@ -19,8 +19,11 @@ variables:
   imagePullSecret: 'azraudiuslab44f9-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  #vmImageName: 'ubuntu-latest'
 
+  pool:
+  name: vmssagentspool
+  
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
 
