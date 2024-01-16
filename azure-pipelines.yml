@@ -20,6 +20,7 @@ variables:
 
   # Agent VM image name
   # vmImageName: 'ubuntu-latest'
+  agentPoolName: 'vmssagentspool'
   
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
@@ -32,7 +33,7 @@ stages:
     displayName: Build
     pool:
       # vmImage: $(vmImageName)
-      name: vmssagentspool
+      name: $(agentPoolName)
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -56,7 +57,8 @@ stages:
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
     displayName: Deploy
     pool:
-      vmImage: $(vmImageName)
+      # vmImage: $(vmImageName)
+      name: $(agentPoolName)
     environment: 'bennkennpipelinesjavascriptdocker.devops'
     strategy:
       runOnce:
@@ -85,7 +87,8 @@ stages:
     displayName: Deploy Pull request
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      name: $(agentPoolName)
 
     environment: 'bennkennpipelinesjavascriptdocker.$(k8sNamespaceForPR)'
     strategy:
